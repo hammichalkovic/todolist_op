@@ -2,7 +2,7 @@ export class CheckList {
     constructor(name) {
         this.name = name;
         this.checkItems = [];
-        this.checked = false;
+        // this.checked = false;
     }
 
     push(item) {

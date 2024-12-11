@@ -3,6 +3,7 @@ import { Projects } from './projects_module.js';
 import { ProjectClass, toAddProject } from './project_module.js';
 import { TaskClass, toAddTask, toRemoveTask} from './task_module.js';
 import { CheckList } from './checklist_module.js';
+import {CheckListItem} from './checklist_item_module.js';
 
 let projects = new Projects();
 console.log(projects);
@@ -46,14 +47,24 @@ const checkListsManagment = (function () {
     };
 
     const toAddItem = (projectNum, taskItem, item) => {
-        projectsDist[projectNum].tasks[taskItem].checkItems.push(item);
+        projectsDist[projectNum].tasks[taskItem].checkItems.push(new CheckListItem(item));
     };
 
     const toRemoveItem = (projectNum, taskItem, itemNum) => {
         projectsDist[projectNum].tasks[taskItem].checkItems.splice(itemNum, 1);
     };
 
-    return { toAddCheckList, toRemoveList, toAddItem, toRemoveItem };
+    const toToggleCheck = (projectNum, taskItem, itemNum) => {
+       if (projectsDist[projectNum].tasks[taskItem].checkItems[itemNum].checked == false) {
+        projectsDist[projectNum].tasks[taskItem].checkItems[itemNum].checked = true;
+       } else {
+        projectsDist[projectNum].tasks[taskItem].checkItems[itemNum].checked = false;
+       }
+       
+        ;
+    };
+
+    return { toAddCheckList, toRemoveList, toAddItem, toRemoveItem, toToggleCheck };
 })(); 
 
 toAddNewProject('My Tasks');
@@ -64,7 +75,9 @@ taskManagement.toAdd(0, 'toBoil', 'ASAP', 'HIGH', 'Now');
 checkListsManagment.toAddCheckList(0, 'My First Checklist');
 // checkListsManagment.toRemoveList(0, 1);
 checkListsManagment.toAddItem(0, 1, 'First List Item');
-checkListsManagment.toRemoveItem(0, 1, 0)
+// checkListsManagment.toRemoveItem(0, 1, 0)
+checkListsManagment.toToggleCheck(0, 1, 0);
+checkListsManagment.toToggleCheck(0, 1, 0);
 
 taskManagement.toMarkAsDone(0, 0);
 console.log(projects);
