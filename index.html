@@ -14,14 +14,21 @@
                 <div class="task_element">
                     <div class="task_props">
                         <p class="task_title">My First Task</p>
-                        <div></div>
-                        <div class="task_duetime">21.02.25</div>
+                        <div class="task_priority high"></div>
+                        <div class="task_duetime  duetime_high">21.02.25</div>
                     </div>
                     <p class="task_descript">The description of the task</p>
                 </div>
                 <form action="" method="post" class="task_adder">
                     <div class="task_addition_icon"></div>
                     <input type="text" сlass="task_to_add" placeholder="Add new task"></input>
+                    <div class="choose_priority">
+                        <div class="high"></div>
+                        <div class="medium"></div>
+                        <div class="low"></div>
+                    </div>
+                    <input type="text" class="task_duetime_to_add" placeholder="Due time"></input>
+                    <input type="text" class="task_description_to_add" placeholder="Describe the details of your task"></input>
                 </form>
                 <form action="" method="post" class="checkitem_adder">
                     <div class="checkitem_addition_icon"></div>
@@ -39,9 +46,11 @@
         </section>
         <section id="info">
             <h2>Priotity Rates</h2>
-            <p id="high_rate">High</p>
-            <p id="medium_rate">Medium</p>
-            <p id="low_rate">Low</p>
+            <div id="rates_el">
+                <p id="high_rate">High</p>
+                <p id="medium_rate">Medium</p>
+                <p id="low_rate">Low</p>
+            </div>
 
         </section>
     </main>
